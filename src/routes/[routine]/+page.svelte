@@ -1,6 +1,6 @@
 <script lang="ts">
     import { browser } from "$app/environment"
-    import BookIcon from "$lib/components/BookIcon.svelte"
+    import ListIcon from "$lib/components/ListIcon.svelte"
     import GearIcon from "$lib/components/GearIcon.svelte"
     import Workflow from "$lib/components/Workflow.svelte"
     import WorkflowInputForm from "$lib/components/WorkflowCreateForm.svelte"
@@ -15,7 +15,7 @@
     export let data
 
     let pageLoaded = false
-    let currentTab: "Overview" | "Settings" = "Overview"
+    let currentTab: "Workflows" | "Settings" = "Workflows"
     let newRoutineName = data.routine.canonicalName
     let isFormValid = false
     let isFormTouched = false
@@ -78,12 +78,12 @@
     <h1 class="text-xl font-bold">{data.routine.canonicalName}</h1>
     <p class="text-sm text-[#848d97]">"Remove" and "Delete" buttons works by pressing and holding it for 1 second.</p>
     <div class="flex flex-row">
-        <button class="tab" data-active={currentTab === "Overview"} on:click={() => (currentTab = "Overview")}><BookIcon />Overview</button>
+        <button class="tab" data-active={currentTab === "Workflows"} on:click={() => (currentTab = "Workflows")}><ListIcon />Workflows</button>
         <button class="tab" data-active={currentTab === "Settings"} on:click={() => (currentTab = "Settings")}><GearIcon /> Settings</button>
     </div>
 </div>
 
-{#if currentTab === "Overview"}
+{#if currentTab === "Workflows"}
     <div class="mb-8">
         <WorkflowInputForm on:workflowAdd={onWorkflowAdd} />
     </div>
